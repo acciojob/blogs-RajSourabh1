@@ -51,7 +51,9 @@ public class ImageService {
             int imageLength = Integer.parseInt(image.getDimensions().split("X")[0]);
             int imageBreadth = Integer.parseInt(image.getDimensions().split("X")[1]);
 
-            int count = (screenLength*screenBreadth)/imageLength*imageBreadth;
+            int maxLength = screenLength/imageLength;
+            int maxBreadth = screenBreadth/imageBreadth;
+            int count = maxLength*maxBreadth;
             return count;
         }
         return 0;
