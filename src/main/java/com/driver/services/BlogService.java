@@ -40,10 +40,12 @@ public class BlogService {
         Blog blog = new Blog();
         blog.setContent(content);
         blog.setTitle(title);
+        blog.setPubDate(new Date());
         blog.setUser(user);
 
         List<Blog> blogList = user.getBlogList();
         blogList.add(blog);
+        user.setBlogList(blogList);
         userRepository1.save(user);
     }
 

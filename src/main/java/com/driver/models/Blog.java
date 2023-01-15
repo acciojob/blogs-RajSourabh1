@@ -20,7 +20,6 @@ public class Blog{
 
     private String content;
 
-    @UpdateTimestamp
     private Date pubDate;
 
     @ManyToOne
