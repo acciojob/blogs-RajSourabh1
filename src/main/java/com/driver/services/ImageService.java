@@ -23,13 +23,10 @@ public class ImageService {
         image.setDimensions(dimensions);
         image.setBlog(blog);
 
-        List<Image> bloglist = new ArrayList<>();
-        bloglist = blog.getImageList();
-        bloglist.add(image);
-        blog.setImageList(bloglist);
 
-        //imageRepository2.save(image);
-        blogRepository.save(blog);
+
+        imageRepository2.save(image);
+
         return image;
     }
 
@@ -45,17 +42,16 @@ public class ImageService {
         //Find the number of images of given dimensions that can fit in a screen having `screenDimensions`
         //In case the image is null, return 0
         //int count = 0;
-        if(Objects.nonNull(image)){
+        String str = image.getDimensions();
             int screenLength = Integer.parseInt(screenDimensions.split("X")[0]);
             int screenBreadth = Integer.parseInt(screenDimensions.split("X")[1]);
-            int imageLength = Integer.parseInt(image.getDimensions().split("X")[0]);
-            int imageBreadth = Integer.parseInt(image.getDimensions().split("X")[1]);
+            int imageLength = Integer.parseInt(str.split("X")[0]);
+            int imageBreadth = Integer.parseInt(str.split("X")[1]);
 
             int maxLength = screenLength/imageLength;
             int maxBreadth = screenBreadth/imageBreadth;
             int count = maxLength*maxBreadth;
             return count;
-        }
-        return 0;
+
     }
 }
