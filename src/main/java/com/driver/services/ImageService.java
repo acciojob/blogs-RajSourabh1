@@ -69,7 +69,7 @@ public class ImageService {
             screenBreadth += (screenDimensions.charAt(i) - '0');
         }
 
-        int ans = (screenLength/imageLength)*(screenBreadth/imageBreadth);
+        int ans = (int)(Math.floor((new Double(screenLength))/(new Double(imageLength)))*Math.floor((new Double(screenBreadth))/(new Double(imageBreadth))));
         return ans;
     }
 }
