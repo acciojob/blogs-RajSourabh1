@@ -41,31 +41,35 @@ public class ImageService {
     public int countImagesInScreen(Image image, String screenDimensions) {
         //Find the number of images of given dimensions that can fit in a screen having `screenDimensions`
         //In case the image is null, return 0
-        int count = 0;
         String str = image.getDimensions();
-            int lenScreen = 0;
-            int breScreen = 0;
-            for(int i = 0;i<screenDimensions.length();i++){
-                if(screenDimensions.charAt(i)=='X'){
-                    lenScreen = breScreen;
-                    breScreen = 0;
-                    continue;
-                }
-                breScreen *=10;
-                breScreen +=(screenDimensions.charAt(i)-'0');
-            }
-            int lenImage = 0;
-            int breImage = 0;
-        for(int i = 0;i<screenDimensions.length();i++){
-            if(screenDimensions.charAt(i)=='X'){
-                lenImage = breImage;
-                breImage = 0;
+
+        int imageLength = 0;
+        int imageBreadth = 0;
+
+        for(int i = 0; i<str.length(); i++){
+            if(str.charAt(i) == 'X'){
+                imageLength = imageBreadth;
+                imageBreadth = 0;
                 continue;
             }
-            breImage *=10;
-            breImage +=(screenDimensions.charAt(i)-'0');
+            imageBreadth *= 10;
+            imageBreadth += (str.charAt(i) - '0');
         }
-         count = (lenScreen/lenImage) * (breScreen/breImage);
-            return count;
+
+
+        int screenLength = 0;
+        int screenBreadth = 0;
+        for(int i = 0; i<screenDimensions.length(); i++){
+            if(screenDimensions.charAt(i) == 'X'){
+                screenLength = screenBreadth;
+                screenBreadth = 0;
+                continue;
+            }
+            screenBreadth *= 10;
+            screenBreadth += (screenDimensions.charAt(i) - '0');
+        }
+
+        int ans = (screenLength/imageLength)*(screenBreadth*imageBreadth);
+        return ans;
     }
 }
