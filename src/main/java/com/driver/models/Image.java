@@ -46,7 +46,7 @@ public class Image{
         return dimensions;
     }
 
-    public void setDimensions(String dimension) {
+    public void setDimensions(String dimensions) {
         this.dimensions = dimensions;
     }
 
