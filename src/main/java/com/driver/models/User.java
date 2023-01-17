@@ -11,7 +11,7 @@ public class User{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String Username;
+    private String username;
 
     private String password;
 
@@ -23,8 +23,8 @@ public class User{
     private List<Blog> blogList;
 
 
-    public User(String Username, String password, String firstName, String lastName) {
-        this.Username = Username;
+    public User(String username, String password, String firstName, String lastName) {
+        this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -42,11 +42,11 @@ public class User{
     }
 
     public String getUsername() {
-        return Username;
+        return username;
     }
 
     public void setUsername(String userName) {
-        this.Username = Username;
+        this.username = userName;
     }
 
     public String getPassword() {
